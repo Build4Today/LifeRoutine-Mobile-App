@@ -35,8 +35,8 @@ export function Home() {
             setLoading(true);
             const response = await api.get('summary');
             setSummary(response.data);
-        } catch (error) {
-            Alert.alert('Ooops...', "We can't load your habits summary");
+        } catch (error: any) {
+            Alert.alert('Whoops...', error.message);
             console.log(error);
         } finally {
             setLoading(false);
