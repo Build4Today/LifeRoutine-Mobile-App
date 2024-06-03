@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native';
 
 import dayjs from 'dayjs';
 import clsx from 'clsx';
-import { api } from '../lib/axios';
+import { api } from '../lib/api';
 
 import { Loading } from '../components/Loading';
 import { BackButton } from '../components/BackButton';
@@ -33,6 +33,7 @@ export function Habit() {
     const route = useRoute();
     const { date } = route.params as Params;
 
+    // date validation
     const parsedDate = dayjs(date);
     const isDateInPast = parsedDate.endOf('day').isBefore(new Date());
     const dayOfWeek = parsedDate.format('dddd');

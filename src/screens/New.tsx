@@ -8,7 +8,7 @@ import {
     Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { api } from '../lib/axios';
+import { api } from '../lib/api';
 
 import colors from 'tailwindcss/colors';
 import { Feather } from '@expo/vector-icons';

@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { View, Text, ScrollView, Alert } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import { api } from '../lib/axios';
+import { api } from '../lib/api';
 import dayjs from 'dayjs';
 
 import { Header } from '../components/Header';
