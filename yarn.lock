@@ -6262,6 +6262,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"life-routine@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "life-routine@workspace:."
+  dependencies:
+    "@babel/core": "npm:^7.12.9"
+    "@expo-google-fonts/inter": "npm:^0.2.3"
+    "@react-native/assets-registry": "npm:^0.74.83"
+    "@react-native/metro-config": "npm:^0.74.83"
+    "@react-navigation/native": "npm:^6.1.2"
+    "@react-navigation/native-stack": "npm:^6.9.8"
+    "@types/react": "npm:~18.2.79"
+    "@types/react-native": "npm:~0.70.6"
+    autoprefixer: "npm:^10.4.19"
+    axios: "npm:^1.2.5"
+    clsx: "npm:^1.2.1"
+    dayjs: "npm:^1.11.7"
+    expo: "npm:^51.0.9"
+    expo-font: "npm:~12.0.6"
+    expo-notifications: "npm:~0.28.5"
+    expo-status-bar: "npm:~1.12.1"
+    nativewind: "npm:^2.0.11"
+    postcss: "npm:^8.4.38"
+    react: "npm:18.2.0"
+    react-dom: "npm:18.2.0"
+    react-native: "npm:^0.74.1"
+    react-native-onboard: "npm:^2.6.0"
+    react-native-reanimated: "npm:~3.10.1"
+    react-native-safe-area-context: "npm:4.10.1"
+    react-native-screens: "npm:3.31.1"
+    react-native-svg: "npm:15.2.0"
+    react-native-svg-transformer: "npm:^1.0.0"
+    react-native-web: "npm:~0.19.10"
+    tailwindcss: "npm:3.3.2"
+    typescript: "npm:~5.3.3"
+  languageName: unknown
+  linkType: soft
+
 "lighthouse-logger@npm:^1.0.0":
   version: 1.4.2
   resolution: "lighthouse-logger@npm:1.4.2"
@@ -7055,43 +7092,6 @@ __metadata:
   checksum: 10c0/46ea0f3ffa8bc6a5bc0c7081ffc3907777f0ed6516888d40a518c5111f8366d97d2678911ad1a6882bf592fa9de6c784fea32e1687bb94e1f4944170af48a5cf
   languageName: node
   linkType: hard
-
-"mobile@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "mobile@workspace:."
-  dependencies:
-    "@babel/core": "npm:^7.12.9"
-    "@expo-google-fonts/inter": "npm:^0.2.3"
-    "@react-native/assets-registry": "npm:^0.74.83"
-    "@react-native/metro-config": "npm:^0.74.83"
-    "@react-navigation/native": "npm:^6.1.2"
-    "@react-navigation/native-stack": "npm:^6.9.8"
-    "@types/react": "npm:~18.2.79"
-    "@types/react-native": "npm:~0.70.6"
-    autoprefixer: "npm:^10.4.19"
-    axios: "npm:^1.2.5"
-    clsx: "npm:^1.2.1"
-    dayjs: "npm:^1.11.7"
-    expo: "npm:^51.0.9"
-    expo-font: "npm:~12.0.6"
-    expo-notifications: "npm:~0.28.5"
-    expo-status-bar: "npm:~1.12.1"
-    nativewind: "npm:^2.0.11"
-    postcss: "npm:^8.4.38"
-    react: "npm:18.2.0"
-    react-dom: "npm:18.2.0"
-    react-native: "npm:^0.74.1"
-    react-native-onboard: "npm:^2.6.0"
-    react-native-reanimated: "npm:~3.10.1"
-    react-native-safe-area-context: "npm:4.10.1"
-    react-native-screens: "npm:3.31.1"
-    react-native-svg: "npm:15.2.0"
-    react-native-svg-transformer: "npm:^1.0.0"
-    react-native-web: "npm:~0.19.10"
-    tailwindcss: "npm:3.3.2"
-    typescript: "npm:~5.3.3"
-  languageName: unknown
-  linkType: soft
 
 "ms@npm:2.0.0":
   version: 2.0.0
