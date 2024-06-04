@@ -9,6 +9,7 @@ import { HabitDay, daySize } from '../components/HabitDay';
 import { Loading } from '../components/Loading';
 
 import { generateDatesFromYearBeginning } from '../utils/generate-dates-from-year-beginning';
+import { weekDaysEUFormat } from '../lib/date.format';
 
 type SummaryProps = {
     id: string;
@@ -17,7 +18,6 @@ type SummaryProps = {
     completed: number;
 }[];
 
-const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const datesFromYearBeginning = generateDatesFromYearBeginning();
 
 const minimumSummaryDatesSizes = 18 * 5;
@@ -58,7 +58,7 @@ export function Home() {
             <Header />
 
             <View className='flex-row mt-6 mb-2'>
-                {weekDays.map((weekDay, index) => (
+                {weekDaysEUFormat.map((weekDay, index) => (
                     <Text
                         key={`${weekDay}-${index}`}
                         className='text-zinc-400 text-xl font-bold text-center mx-1'

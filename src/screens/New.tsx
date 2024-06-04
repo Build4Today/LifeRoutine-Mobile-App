@@ -14,16 +14,7 @@ import colors from 'tailwindcss/colors';
 import { Feather } from '@expo/vector-icons';
 import { BackButton } from '../components/BackButton';
 import { Checkbox } from '../components/Checkbox';
-
-const availableWeekDays = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-];
+import { weekDaysEUFormat } from '../lib/date.format';
 
 export function New() {
     const [weekDays, setWeekDays] = useState<number[]>([]);
@@ -44,12 +35,15 @@ export function New() {
     async function handleCreateNewHabit() {
         try {
             if (!title || weekDays.length === 0) {
+                // TODO replace to an error toast
+
                 return Alert.alert(
                     'Missing habit',
                     'Please select your new routine name and commitment'
                 );
             }
-            await api.post('/habits', { title, weekDays });
+            const payload = { title, weekDays };
+            await api.post('/habits', payload);
             // Alert.alert(
             //     'Habit created',
             //     'Your habit was successfully created!'
@@ -84,7 +78,7 @@ export function New() {
                 <Text className='mt-6 font-semibold text-base text-white'>
                     What is the recurrence?
                 </Text>
-                {availableWeekDays.map((weekDay, index) => (
+                {weekDaysEUFormat.map((weekDay, index) => (
                     <Checkbox
                         key={weekDay}
                         title={weekDay}
