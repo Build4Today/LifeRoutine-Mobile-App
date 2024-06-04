@@ -35,7 +35,7 @@ export function New() {
     async function handleCreateNewHabit() {
         try {
             if (!title || weekDays.length === 0) {
-                // TODO replace to an error toast
+                // TODO replace to an error toast instead
 
                 return Alert.alert(
                     'Missing Routine',
