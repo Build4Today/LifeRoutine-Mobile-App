@@ -38,8 +38,8 @@ export function New() {
                 // TODO replace to an error toast
 
                 return Alert.alert(
-                    'Missing habit',
-                    'Please select your new routine name and commitment'
+                    'Missing Routine',
+                    'You need to select a routine name and commitment'
                 );
             }
             const payload = { title, weekDays };

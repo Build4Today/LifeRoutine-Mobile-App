@@ -54,7 +54,7 @@ export function Habit() {
             setCompletedHabits(response.data.completedHabits);
         } catch (error) {
             console.log(error);
-            Alert.alert('Ooops..', 'Not able to load habits data');
+            Alert.alert('Unable to load data', 'Unable to retrieve your routines. Try again later');
         } finally {
             setLoading(false);
         }
@@ -71,11 +71,11 @@ export function Habit() {
             } else {
                 setCompletedHabits((prevState) => [...prevState, habitId]);
             }
-        } catch (error) {
+        } catch (error: any | Error) {
             console.log(error);
             Alert.alert(
-                'Ooops..',
-                'It was not possible update the habit status'
+                'Cannot update the routine status',
+                `${error.message}. Try again later`
             );
         }
     }
