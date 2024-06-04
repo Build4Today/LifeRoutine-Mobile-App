@@ -35,7 +35,7 @@ export function Home() {
             setLoading(true);
             const response = await api.get('summary');
             setSummary(response.data);
-        } catch (error: any) {
+        } catch (error: any | Error) {
             Alert.alert('Whoops...', error.message);
             console.log(error);
         } finally {

@@ -27,7 +27,7 @@ const availableWeekDays = [
 
 export function New() {
     const [weekDays, setWeekDays] = useState<number[]>([]);
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState<string>('');
 
     function handleToggleWeekDay(weekDayIndex: number) {
         if (weekDays.includes(weekDayIndex)) {
@@ -46,19 +46,19 @@ export function New() {
             if (!title || weekDays.length === 0) {
                 return Alert.alert(
                     'Missing habit',
-                    'insert your new habit and your commitment'
+                    'Please select your new routine name and commitment'
                 );
             }
             await api.post('/habits', { title, weekDays });
-            Alert.alert(
-                'Habit created',
-                'Your habit was successfully created!'
-            );
+            // Alert.alert(
+            //     'Habit created',
+            //     'Your habit was successfully created!'
+            // );
             setTitle('');
             setWeekDays([]);
-        } catch (error) {
+        } catch (error: any | Error) {
             console.log(error);
-            Alert.alert('Ooops...', 'Not possible to create the habit');
+            Alert.alert('Ooops...',  error.message);
         } finally {
             navigate('home');
         }
