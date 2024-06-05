@@ -11,7 +11,7 @@ export function HabitsEmpty() {
                 className='text-yellow-400 text-base underline active:text-yellow-500'
                 onPress={() => navigate('new')}
             >
-                start one here
+                Start routine
             </Text>
         </Text>
     );

@@ -50,15 +50,17 @@ export function Habit() {
 
   async function fetchHabits() {
     setIsLoading(true);
+
     try {
       const response = await api.get("/day", { params: { date } });
       setDayInfo(response.data);
       setCompletedHabits(response.data.completedHabits);
     } catch (error) {
       console.log(error);
+
       Toast.show({
         type: "error",
-        text1: "Unable to load data.  Try again later",
+        text1: "Unable to load data. Try again later",
       });
     } finally {
       setIsLoading(false);

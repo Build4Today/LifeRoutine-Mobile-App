@@ -38,7 +38,7 @@ export function New() {
         Toast.show({
           type: "info",
           text1: "Missing Routine",
-          text2: "You need to select a routine name and commitment",
+          text2: "Select a name and commitment",
         });
         return;
       }
@@ -67,10 +67,10 @@ export function New() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <BackButton />
         <Text className="mt-6 font-extrabold text-3xl text-white">
-          Create habit
+          Create routine
         </Text>
         <Text className="mt-6 font-semibold text-base text-white">
-          What is your commitment?
+          What's the commitment?
         </Text>
         <TextInput
           className="h-12 pl-4 rounded-lg mt-3 bg-zinc-900 text-white focus:border-2 border-zinc-800 focus:border-green-600"
