@@ -27,13 +27,15 @@ export default function App() {
             await Notifications.cancelAllScheduledNotificationsAsync();
         }
 
+        // TODO retrieve the day of the week (e.g. Monday)
+        const dayOfTheWeek = 'Monday';
         const trigger = new Date(Date.now());
         trigger.setHours(trigger.getHours() + 5);
         trigger.setSeconds(0);
 
         await Notifications.scheduleNotificationAsync({
             content: {
-                title: 'Hello, buddy! 😀',
+                title: `Happy ${dayOfTheWeek}!`,
                 body: 'Did you register your habits today?',
             },
             trigger,
