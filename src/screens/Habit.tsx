@@ -26,7 +26,7 @@ interface DayInfoProps {
 }
 
 export function Habit() {
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [dayInfo, setDayInfo] = useState<DayInfoProps | null>(null);
     const [completedHabits, setCompletedHabits] = useState<string[]>([]);
 
@@ -47,8 +47,8 @@ export function Habit() {
         : 0;
 
     async function fetchHabits() {
+        setIsLoading(true);
         try {
-            setLoading(true);
             const response = await api.get('/day', { params: { date } });
             setDayInfo(response.data);
             setCompletedHabits(response.data.completedHabits);
@@ -56,7 +56,7 @@ export function Habit() {
             console.log(error);
             Alert.alert('Unable to load data', 'Unable to retrieve your routines. Try again later');
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
     }
 
@@ -84,7 +84,7 @@ export function Habit() {
         fetchHabits();
     }, []);
 
-    if (loading) {
+    if (isLoading) {
         return <Loading />;
     }
 
