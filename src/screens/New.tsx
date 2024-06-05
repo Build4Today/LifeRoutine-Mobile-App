@@ -79,8 +79,9 @@ export function New() {
           value={title}
           onChangeText={setTitle}
         />
+
         <Text className="mt-6 font-semibold text-base text-white">
-          What is the recurrence?
+          What's the recurrence?
         </Text>
         {weekDaysEUFormat.map((weekDay, index) => (
           <Checkbox

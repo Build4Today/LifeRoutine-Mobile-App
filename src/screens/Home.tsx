@@ -10,7 +10,7 @@ import { HabitDay, daySize } from "../components/HabitDay";
 import { Loading } from "../components/Loading";
 
 import { generateDatesFromYearBeginning } from "../utils/generate-dates-from-year-beginning";
-import { weekDaysEUFormat } from "../lib/date.format";
+import { weekDaysEUShortFormat } from "../lib/date.format";
 
 type SummaryProps = {
   id: string;
@@ -63,7 +63,7 @@ export function Home() {
       <Header />
 
       <View className="flex-row mt-6 mb-2">
-        {weekDaysEUFormat.map((weekDay, index) => (
+        {weekDaysEUShortFormat.map((weekDay, index) => (
           <Text
             key={`${weekDay}-${index}`}
             className="text-zinc-400 text-xl font-bold text-center mx-1"
