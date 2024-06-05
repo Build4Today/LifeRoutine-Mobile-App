@@ -58,8 +58,7 @@ export function Habit() {
       console.log(error);
       Toast.show({
         type: "error",
-        text1: "Unable to load data",
-        text2: "Unable to retrieve your routines. Try again later",
+        text1: "Unable to load data.  Try again later",
       });
     } finally {
       setIsLoading(false);
