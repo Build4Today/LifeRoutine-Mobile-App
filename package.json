@@ -2,6 +2,15 @@
   "name": "life-routine",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
+  "author": "Pierre-Henry Soria",
+  "description": "A React Native app that helps you to improve your daily routine and time management",
+  "keywords": [
+    "time management",
+    "tracker",
+    "habit",
+    "routine",
+    "react native"
+  ],
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
