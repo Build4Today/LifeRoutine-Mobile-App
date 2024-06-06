@@ -1,9 +1,10 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { api } from "../lib/api";
 import dayjs from "dayjs";
 import Toast from "react-native-toast-message";
+import DeviceInfo from "react-native-device-info";
 
 import { Header } from "../components/Header";
 import { HabitDay, daySize } from "../components/HabitDay";
@@ -28,13 +29,25 @@ const amountOfDaysToFill =
 export function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [summary, setSummary] = useState<SummaryProps | null>(null);
+  const [deviceId, setDeviceId] = useState("");
 
   const { navigate } = useNavigation();
+
+  useEffect(() => {
+    const getDeviceId = async () => {
+      const id = await DeviceInfo.getUniqueId();
+      setDeviceId(id);
+    };
+
+    getDeviceId();
+  }, []);
 
   async function fetchData() {
     setIsLoading(true);
     try {
-      const response = await api.get("summary");
+      const response = await api.get("summary", {
+        params: { deviceId },
+      });
       setSummary(response.data);
     } catch (error: any | Error) {
       Toast.show({
@@ -51,7 +64,7 @@ export function Home() {
   useFocusEffect(
     useCallback(() => {
       fetchData();
-    }, [])
+    }, [deviceId])
   );
 
   if (isLoading) {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   TouchableOpacity,
   ScrollView,
@@ -9,6 +9,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { api } from "../lib/api";
 import Toast from "react-native-toast-message";
+import DeviceInfo from "react-native-device-info";
 
 import colors from "tailwindcss/colors";
 import { Feather } from "@expo/vector-icons";
@@ -19,6 +20,16 @@ import { weekDaysEUFormat } from "../lib/date.format";
 export function New() {
   const [weekDays, setWeekDays] = useState<number[]>([]);
   const [title, setTitle] = useState<string>("");
+  const [deviceId, setDeviceId] = useState("");
+
+  useEffect(() => {
+    const getDeviceId = async () => {
+      const id = await DeviceInfo.getUniqueId();
+      setDeviceId(id);
+    };
+
+    getDeviceId();
+  }, []);
 
   function handleToggleWeekDay(weekDayIndex: number) {
     if (weekDays.includes(weekDayIndex)) {
@@ -42,7 +53,7 @@ export function New() {
         });
         return;
       }
-      const payload = { title, weekDays };
+      const payload = { title, weekDays, deviceId };
       await api.post("/habits", payload);
       Toast.show({
         type: "success",
