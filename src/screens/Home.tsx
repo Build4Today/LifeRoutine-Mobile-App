@@ -52,7 +52,7 @@ export function Home() {
     } catch (error: any | Error) {
       Toast.show({
         type: "error",
-        text1: "Oops...",
+        text1: "Data temporary unavailable",
         text2: error.message,
       });
       console.log(error);
