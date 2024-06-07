@@ -67,7 +67,7 @@ export function New() {
       console.log(error);
       Toast.show({
         type: "error",
-        text1: "Oops...",
+        text1: "Unable to create habit",
         text2: error.message,
       });
     }
