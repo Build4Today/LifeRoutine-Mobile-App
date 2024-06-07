@@ -31,12 +31,11 @@ export default function App() {
   useEffect(() => {
     const createOrUpdateDevice = async () => {
       try {
-        const deviceId = await Device.getUniqueIdAsync();
+        const deviceId = Device.osBuildFingerprint;
         await api.post("/device", { deviceId });
         setIsLoading(false);
       } catch (error) {
         console.log(error);
-        // Handle the error appropriately
       }
     };
 

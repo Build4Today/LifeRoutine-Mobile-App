@@ -29,13 +29,13 @@ const amountOfDaysToFill =
 export function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [summary, setSummary] = useState<SummaryProps | null>(null);
-  const [deviceId, setDeviceId] = useState("");
+  const [deviceId, setDeviceId] = useState<string | null>("");
 
   const { navigate } = useNavigation();
 
   useEffect(() => {
     const getDeviceId = async () => {
-      const id = await Device.getUniqueIdAsync();
+      const id = Device.osBuildFingerprint;
       setDeviceId(id);
     };
 

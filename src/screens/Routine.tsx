@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
-import {
-  ScrollView,
-  View,
-  Text,
-  Alert,
-} from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import dayjs from "dayjs";
 import Toast from "react-native-toast-message";
-import DeviceInfo from "react-native-device-info";
+import * as Device from "expo-device";
 
 import { api } from "../lib/api";
 import { generateProgressPercentage } from "../utils/generate-progress-percentage";
@@ -58,7 +53,7 @@ export function Habit() {
 
   useEffect(() => {
     const getDeviceId = async () => {
-      const id = await DeviceInfo.getUniqueId();
+      const id = Device.osBuildFingerprint;
       setDeviceId(id);
     };
 
@@ -89,9 +84,7 @@ export function Habit() {
       const isHabitAlreadyCompleted = completedHabits.includes(habitId);
       let completedHabitsUpdated: string[] = [];
       if (isHabitAlreadyCompleted) {
-        completedHabitsUpdated = completedHabits.filter(
-          (id) => id !== habitId
-        );
+        completedHabitsUpdated = completedHabits.filter((id) => id !== habitId);
       } else {
         completedHabitsUpdated = [...completedHabits, habitId];
       }
@@ -100,7 +93,7 @@ export function Habit() {
       console.log(error);
       Toast.show({
         text1: "Cannot update the routine status",
-        text2: `${error.message}. Try again later`
+        text2: `${error.message}. Try again later`,
       });
     }
   }
@@ -131,9 +124,10 @@ export function Habit() {
         <ProgressBar progress={habitsProgress} />
 
         <View
-        className={clsx("mt-6", {
-          ["opacity-50"]: isDateInPast,
-        })}>
+          className={clsx("mt-6", {
+            ["opacity-50"]: isDateInPast,
+          })}
+        >
           {dayInfo?.possibleHabits ? (
             dayInfo.possibleHabits?.map((habit) => (
               <Checkbox

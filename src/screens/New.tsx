@@ -24,7 +24,7 @@ export function New() {
 
   useEffect(() => {
     const getDeviceId = async () => {
-      const id = await Device.getUniqueIdAsync();
+      const id = Device.osBuildFingerprint;
       setDeviceId(id);
     };
 
