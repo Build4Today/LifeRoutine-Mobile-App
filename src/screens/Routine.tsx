@@ -31,7 +31,7 @@ export function Habit() {
   const [isLoading, setIsLoading] = useState(true);
   const [dayInfo, setDayInfo] = useState<DayInfoProps | null>(null);
   const [completedHabits, setCompletedHabits] = useState<string[]>([]);
-  const [deviceId, setDeviceId] = useState("");
+  const [deviceId, setDeviceId] = useState<string | null>("");
 
   const route = useRoute();
   const { date } = route.params as HabitParams;

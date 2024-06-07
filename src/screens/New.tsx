@@ -20,7 +20,7 @@ import { weekDaysEUFormat } from "../lib/date.format";
 export function New() {
   const [weekDays, setWeekDays] = useState<number[]>([]);
   const [title, setTitle] = useState<string>("");
-  const [deviceId, setDeviceId] = useState("");
+  const [deviceId, setDeviceId] = useState<string | null>("");
 
   useEffect(() => {
     const getDeviceId = async () => {
