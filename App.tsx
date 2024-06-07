@@ -8,7 +8,7 @@ import {
   Inter_800ExtraBold,
 } from "@expo-google-fonts/inter";
 import * as Notifications from "expo-notifications";
-import DeviceInfo from "react-native-device-info";
+import * as Device from "expo-device";
 import { api } from "./src/lib/api";
 import { Loading } from "./src/components/Loading";
 import { Routes } from "./src/routes";
@@ -31,7 +31,7 @@ export default function App() {
   useEffect(() => {
     const createOrUpdateDevice = async () => {
       try {
-        const deviceId = await DeviceInfo.getUniqueId();
+        const deviceId = await Device.getUniqueIdAsync();
         await api.post("/device", { deviceId });
         setIsLoading(false);
       } catch (error) {

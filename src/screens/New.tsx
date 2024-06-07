@@ -9,7 +9,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { api } from "../lib/api";
 import Toast from "react-native-toast-message";
-import DeviceInfo from "react-native-device-info";
+import * as Device from "expo-device";
 
 import colors from "tailwindcss/colors";
 import { Feather } from "@expo/vector-icons";
@@ -24,7 +24,7 @@ export function New() {
 
   useEffect(() => {
     const getDeviceId = async () => {
-      const id = await DeviceInfo.getUniqueId();
+      const id = await Device.getUniqueIdAsync();
       setDeviceId(id);
     };
 

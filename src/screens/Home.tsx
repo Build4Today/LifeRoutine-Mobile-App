@@ -4,7 +4,7 @@ import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { api } from "../lib/api";
 import dayjs from "dayjs";
 import Toast from "react-native-toast-message";
-import DeviceInfo from "react-native-device-info";
+import * as Device from "expo-device";
 
 import { Header } from "../components/Header";
 import { HabitDay, daySize } from "../components/HabitDay";
@@ -35,7 +35,7 @@ export function Home() {
 
   useEffect(() => {
     const getDeviceId = async () => {
-      const id = await DeviceInfo.getUniqueId();
+      const id = await Device.getUniqueIdAsync();
       setDeviceId(id);
     };
 
