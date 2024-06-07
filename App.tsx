@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
-import { StatusBar } from 'react-native';
+import { useEffect, useState } from "react";
+import { StatusBar } from "react-native";
 import {
-    useFonts,
-    Inter_400Regular,
-    Inter_600SemiBold,
-    Inter_700Bold,
-    Inter_800ExtraBold,
-} from '@expo-google-fonts/inter';
-import * as Notifications from 'expo-notifications';
-import { Loading } from './src/components/Loading';
-import { Routes } from './src/routes';
+  useFonts,
+  Inter_400Regular,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_800ExtraBold,
+} from "@expo-google-fonts/inter";
+import * as Notifications from "expo-notifications";
+import DeviceInfo from "react-native-device-info";
+import { api } from "./src/lib/api";
+import { Loading } from "./src/components/Loading";
+import { Routes } from "./src/routes";
 import { weekDaysEUFormat } from "./src/lib/date.format";
 
 const dayOfTheWeek = () => {
@@ -18,48 +20,62 @@ const dayOfTheWeek = () => {
 };
 
 export default function App() {
-    const [fontsLoaded] = useFonts({
-        Inter_400Regular,
-        Inter_600SemiBold,
-        Inter_700Bold,
-        Inter_800ExtraBold,
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_800ExtraBold,
+  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const createOrUpdateDevice = async () => {
+      try {
+        const deviceId = await DeviceInfo.getUniqueId();
+        await api.post("/device", { deviceId });
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        // Handle the error appropriately
+      }
+    };
+
+    createOrUpdateDevice();
+  }, []);
+
+  async function schedulePushNotification() {
+    const schedule = await Notifications.getAllScheduledNotificationsAsync();
+    if (schedule.length > 0) {
+      await Notifications.cancelAllScheduledNotificationsAsync();
+    }
+    const trigger = new Date(Date.now());
+    trigger.setHours(trigger.getHours() + 5);
+    trigger.setSeconds(0);
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: `Happy ${dayOfTheWeek()}!`,
+        body: "Did you register your habits today?",
+      },
+      trigger,
     });
+  }
 
-    async function schedulePushNotification() {
-        const schedule = await Notifications.getAllScheduledNotificationsAsync();
-        if (schedule.length > 0) {
-            await Notifications.cancelAllScheduledNotificationsAsync();
-        }
+  useEffect(() => {
+    schedulePushNotification();
+  }, []);
 
-        const trigger = new Date(Date.now());
-        trigger.setHours(trigger.getHours() + 5);
-        trigger.setSeconds(0);
+  if (!fontsLoaded || isLoading) {
+    return <Loading />;
+  }
 
-        await Notifications.scheduleNotificationAsync({
-            content: {
-                title: `Happy ${dayOfTheWeek()}!`,
-                body: 'Did you register your habits today?',
-            },
-            trigger,
-        });
-    }
-
-    useEffect(() => {
-        schedulePushNotification();
-    }, []);
-
-    if (!fontsLoaded) {
-        return <Loading />;
-    }
-
-    return (
-        <>
-            <Routes />
-            <StatusBar
-                barStyle='light-content'
-                backgroundColor='transparent'
-                translucent
-            />
-        </>
-    );
+  return (
+    <>
+      <Routes />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+    </>
+  );
 }
