@@ -24,5 +24,8 @@ web-build/
 .vscode
 .idea
 
+# Google Play App Signing Files
+life-routine-*.json
+
 # macOS
 .DS_Store
