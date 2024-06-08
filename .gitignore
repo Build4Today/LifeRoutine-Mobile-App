@@ -10,7 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 
-Package manager - Yarn
+# Package manager - Yarn
 .pnp.*
 .yarnrc.yml
 .yarn/*
