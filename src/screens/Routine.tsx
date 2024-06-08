@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ScrollView, View, Text, Platform } from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import * as Application from "expo-application";
 import dayjs from "dayjs";
 import Toast from "react-native-toast-message";
@@ -48,8 +48,6 @@ export function Habit() {
         completedHabits.length
       )
     : 0;
-
-  const { navigate } = useNavigation();
 
   useEffect(() => {
     const getDeviceId = async () => {
