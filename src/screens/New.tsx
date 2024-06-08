@@ -17,6 +17,7 @@ import Feather from "@expo/vector-icons/Feather";
 import { BackButton } from "../components/BackButton";
 import { Checkbox } from "../components/Checkbox";
 import { weekDaysEUFormat } from "../lib/date.format";
+import { getDeviceId } from "../lib/device.util";
 
 export function New() {
   const [weekDays, setWeekDays] = useState<number[]>([]);
@@ -24,15 +25,10 @@ export function New() {
   const [deviceId, setDeviceId] = useState<string | null>("");
 
   useEffect(() => {
-    const getDeviceId = async () => {
-      const id =
-        Platform.OS === "android"
-          ? Application.getAndroidId()
-          : await Application.getIosIdForVendorAsync();
+    (async () => {
+      const id = await getDeviceId();
       setDeviceId(id);
-    };
-
-    getDeviceId();
+    })();
   }, []);
 
   function handleToggleWeekDay(weekDayIndex: number) {

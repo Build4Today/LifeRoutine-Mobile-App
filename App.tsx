@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Platform, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 import {
   useFonts,
   Inter_400Regular,
@@ -7,12 +7,12 @@ import {
   Inter_700Bold,
   Inter_800ExtraBold,
 } from "@expo-google-fonts/inter";
-import * as Application from "expo-application";
 import * as Notifications from "expo-notifications";
 import { api } from "./src/lib/api";
 import { Loading } from "./src/components/Loading";
 import { Routes } from "./src/routes";
 import { weekDaysEUFormat } from "./src/lib/date.format";
+import { getDeviceId } from "./src/lib/device.util";
 
 const dayOfTheWeek = () => {
   const today = new Date();
@@ -31,10 +31,7 @@ export default function App() {
   useEffect(() => {
     const createOrUpdateDevice = async () => {
       try {
-        const deviceId =
-          Platform.OS === "android"
-            ? Application.getAndroidId()
-            : await Application.getIosIdForVendorAsync();
+        const deviceId = await getDeviceId();
 
         await api.post("/device", { deviceId });
         setIsLoading(false);

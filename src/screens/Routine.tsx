@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { ScrollView, View, Text, Platform } from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import { useRoute } from "@react-navigation/native";
-import * as Application from "expo-application";
 import dayjs from "dayjs";
 import Toast from "react-native-toast-message";
 
@@ -14,6 +13,7 @@ import { Checkbox } from "../components/Checkbox";
 import { Loading } from "../components/Loading";
 import { HabitsEmpty } from "../components/HabitsEmpty";
 import clsx from "clsx";
+import { getDeviceId } from "../lib/device.util";
 
 interface HabitParams {
   date: string;
@@ -50,15 +50,10 @@ export function Habit() {
     : 0;
 
   useEffect(() => {
-    const getDeviceId = async () => {
-      const id =
-        Platform.OS === "android"
-        ? Application.getAndroidId()
-          : await Application.getIosIdForVendorAsync();
+    (async () => {
+      const id = await getDeviceId();
       setDeviceId(id);
-    };
-
-    getDeviceId();
+    })();
   }, []);
 
   async function fetchHabits() {

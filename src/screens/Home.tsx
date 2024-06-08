@@ -12,6 +12,7 @@ import { Loading } from "../components/Loading";
 
 import { generateDatesFromYearBeginning } from "../utils/generate-dates-from-year-beginning";
 import { weekDaysEUShortFormat } from "../lib/date.format";
+import { getDeviceId } from "../lib/device.util";
 
 type SummaryProps = {
   id: string;
@@ -34,15 +35,10 @@ export function Home() {
   const { navigate } = useNavigation();
 
   useEffect(() => {
-    const getDeviceId = async () => {
-      const id =
-        Platform.OS === "android"
-          ? Application.getAndroidId()
-          : await Application.getIosIdForVendorAsync();
+    (async () => {
+      const id = await getDeviceId();
       setDeviceId(id);
-    };
-
-    getDeviceId();
+    })();
   }, []);
 
   async function fetchData() {
