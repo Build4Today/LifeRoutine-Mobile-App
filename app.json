@@ -20,14 +20,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ph7.liferoutine"
+      "bundleIdentifier": "me.ph7.liferoutine"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#09090A"
       },
-      "package": "com.ph7.liferoutine"
+      "package": "me.ph7.liferoutine"
     },
     "web": {
       "favicon": "./assets/favicon.png"

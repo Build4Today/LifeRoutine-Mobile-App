@@ -17,7 +17,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       package:
         APP_ENV === "production"
           ? "me.ph7.liferoutine"
-          : "me.ph7.liferoutine.dev",
+          : "dev.ph7.liferoutine.dev",
     },
     extra: {
       eas: {
