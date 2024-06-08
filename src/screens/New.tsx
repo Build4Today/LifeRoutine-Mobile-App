@@ -5,14 +5,15 @@ import {
   Text,
   TextInput,
   View,
+  Platform,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import * as Application from "expo-application";
 import { api } from "../lib/api";
 import Toast from "react-native-toast-message";
-import * as Device from "expo-device";
 
 import colors from "tailwindcss/colors";
-import { Feather } from "@expo/vector-icons";
+import Feather from "@expo/vector-icons/Feather";
 import { BackButton } from "../components/BackButton";
 import { Checkbox } from "../components/Checkbox";
 import { weekDaysEUFormat } from "../lib/date.format";
@@ -24,7 +25,10 @@ export function New() {
 
   useEffect(() => {
     const getDeviceId = async () => {
-      const id = Device.osBuildFingerprint;
+      const id =
+        Platform.OS === "android"
+          ? Application.getAndroidId()
+          : await Application.getIosIdForVendorAsync();
       setDeviceId(id);
     };
 

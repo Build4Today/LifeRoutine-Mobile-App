@@ -1,10 +1,10 @@
 import { useCallback, useState, useEffect } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Platform } from "react-native";
+import * as Application from "expo-application";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { api } from "../lib/api";
 import dayjs from "dayjs";
 import Toast from "react-native-toast-message";
-import * as Device from "expo-device";
 
 import { Header } from "../components/Header";
 import { HabitDay, daySize } from "../components/HabitDay";
@@ -35,7 +35,10 @@ export function Home() {
 
   useEffect(() => {
     const getDeviceId = async () => {
-      const id = Device.osBuildFingerprint;
+      const id =
+        Platform.OS === "android"
+          ? Application.getAndroidId()
+          : await Application.getIosIdForVendorAsync();
       setDeviceId(id);
     };
 

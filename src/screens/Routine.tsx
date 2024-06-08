@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { ScrollView, View, Text } from "react-native";
+import { ScrollView, View, Text, Platform } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import * as Application from "expo-application";
 import dayjs from "dayjs";
 import Toast from "react-native-toast-message";
-import * as Device from "expo-device";
 
 import { api } from "../lib/api";
 import { generateProgressPercentage } from "../utils/generate-progress-percentage";
@@ -53,7 +53,10 @@ export function Habit() {
 
   useEffect(() => {
     const getDeviceId = async () => {
-      const id = Device.osBuildFingerprint;
+      const id =
+        Platform.OS === "android"
+        ? Application.getAndroidId()
+          : await Application.getIosIdForVendorAsync();
       setDeviceId(id);
     };
 

@@ -7,8 +7,8 @@ import {
   Inter_700Bold,
   Inter_800ExtraBold,
 } from "@expo-google-fonts/inter";
+import * as Application from "expo-application";
 import * as Notifications from "expo-notifications";
-import * as Device from "expo-device";
 import { api } from "./src/lib/api";
 import { Loading } from "./src/components/Loading";
 import { Routes } from "./src/routes";
@@ -31,7 +31,11 @@ export default function App() {
   useEffect(() => {
     const createOrUpdateDevice = async () => {
       try {
-        const deviceId = Device.osBuildFingerprint;
+        const deviceId =
+          Platform.OS === "android"
+            ? Application.getAndroidId()
+            : await Application.getIosIdForVendorAsync();
+
         await api.post("/device", { deviceId });
         setIsLoading(false);
       } catch (error) {
