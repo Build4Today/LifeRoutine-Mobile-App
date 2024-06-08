@@ -6260,9 +6260,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"life-routine@workspace:.":
+"liferoutine@workspace:.":
   version: 0.0.0-use.local
-  resolution: "life-routine@workspace:."
+  resolution: "liferoutine@workspace:."
   dependencies:
     "@babel/core": "npm:^7.12.9"
     "@expo-google-fonts/inter": "npm:^0.2.3"

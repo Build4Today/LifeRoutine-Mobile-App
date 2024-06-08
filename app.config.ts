@@ -1,9 +1,5 @@
 import { ConfigContext, ExpoConfig } from "@expo/config";
 
-interface Env {
-  APP_ENV: string;
-}
-
 export default ({ config }: ConfigContext): ExpoConfig => {
   const projectId = config.extra?.eas?.projectId;
   const { APP_ENV } = process.env;
