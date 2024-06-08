@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "LifeRoutine",
-    "slug": "liferoutine",
+    "slug": "life-routine",
     "version": "1.0.0",
     "jsEngine": "hermes",
     "orientation": "portrait",
@@ -20,14 +20,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "me.ph7.liferoutine"
+      "bundleIdentifier": "me.ph7.life-routine"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#09090A"
       },
-      "package": "me.ph7.liferoutine"
+      "package": "me.ph7.life-routine"
     },
     "web": {
       "favicon": "./assets/favicon.png"

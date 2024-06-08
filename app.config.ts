@@ -6,18 +6,18 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 
   return {
     name: APP_ENV === "production" ? "Life Routine" : "Life Routine (DEV)",
-    slug: APP_ENV === "production" ? "liferoutine" : "liferoutine-dev",
+    slug: APP_ENV === "production" ? "life-routine" : "life-routine-dev",
     ios: {
       bundleIdentifier:
         APP_ENV === "production"
-          ? "me.ph7.liferoutine"
-          : "dev.ph7.liferoutine-dev",
+          ? "me.ph7.life-routine"
+          : "dev.ph7.life-routine-dev",
     },
     android: {
       package:
         APP_ENV === "production"
-          ? "me.ph7.liferoutine"
-          : "dev.ph7.liferoutine.dev",
+          ? "me.ph7.life_routine"
+          : "dev.ph7.life_routine.dev",
     },
     extra: {
       eas: {
