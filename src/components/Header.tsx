@@ -20,7 +20,7 @@ export function Header() {
             >
                 <Feather name='plus' color={colors.yellow[500]} size={20} />
                 <Text className='text-white ml-3 font-semibold text-base'>
-                    New
+                    Create
                 </Text>
             </TouchableOpacity>
         </View>

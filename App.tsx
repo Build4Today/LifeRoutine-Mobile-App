@@ -54,7 +54,7 @@ export default function App() {
     await Notifications.scheduleNotificationAsync({
       content: {
         title: `Happy ${dayOfTheWeek()}!`,
-        body: "Did you register your habits today?",
+        body: "Have you registered your habits today?",
       },
       trigger,
     });
