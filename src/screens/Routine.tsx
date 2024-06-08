@@ -113,7 +113,7 @@ export function Habit() {
         <Text className="mt-6 text-zinc-400 font-semibold text-base lowercase">
           {dayOfWeek}
         </Text>
-        <Text className="text-white font-extrabold text-3xl">
+        <Text className="text-black font-extrabold text-3xl">
           {dayAndMonth}
         </Text>
 
@@ -140,7 +140,7 @@ export function Habit() {
         </View>
 
         {isDateInPast && (
-          <Text className="text-white mt-10 text-center">
+          <Text className="text-black mt-10 text-center">
             You cannot edit past habits.
           </Text>
         )}
