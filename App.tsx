@@ -35,8 +35,8 @@ export default function App() {
 
         await api.post("/device", { deviceId });
         setIsLoading(false);
-      } catch (error) {
-        console.log(error);
+      } catch (error: any | Error) {
+        console.log(error.message);
       }
     };
 

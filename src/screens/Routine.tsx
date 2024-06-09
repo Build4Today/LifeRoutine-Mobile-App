@@ -59,9 +59,8 @@ export function Habit() {
   async function fetchHabits() {
     setIsLoading(true);
     try {
-      const response = await api.get("/day", {
-        params: { date, deviceId },
-      });
+      const payload = { date, deviceId };
+      const response = await api.post("/day", payload);
       setDayInfo(response.data);
       setCompletedHabits(response.data.completedHabits);
     } catch (error: any | Error) {
@@ -141,7 +140,7 @@ export function Habit() {
 
         {isDateInPast && (
           <Text className="text-black mt-10 text-center">
-            You cannot edit past habits.
+            You can't edit past habits
           </Text>
         )}
         <Toast />
