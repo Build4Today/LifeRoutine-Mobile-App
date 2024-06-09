@@ -3,6 +3,7 @@ import { ScrollView, View, Text } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import dayjs from "dayjs";
 import Toast from "react-native-toast-message";
+import clsx from "clsx";
 
 import { api } from "../lib/api";
 import { generateProgressPercentage } from "../utils/generate-progress-percentage";
@@ -12,7 +13,6 @@ import { ProgressBar } from "../components/ProgressBar";
 import { Checkbox } from "../components/Checkbox";
 import { Loading } from "../components/Loading";
 import { HabitsEmpty } from "../components/HabitsEmpty";
-import clsx from "clsx";
 import { getDeviceId } from "../lib/device.util";
 
 interface HabitParams {
@@ -79,6 +79,7 @@ export function Habit() {
       await api.patch(`/habits/toggle`, payload);
       const isHabitAlreadyCompleted = completedHabits.includes(habitId);
       let completedHabitsUpdated: string[] = [];
+
       if (isHabitAlreadyCompleted) {
         completedHabitsUpdated = completedHabits.filter((id) => id !== habitId);
       } else {
