@@ -76,7 +76,7 @@ export function Habit() {
   async function handleToggleHabit(habitId: string) {
     try {
       const payload = { id: habitId, deviceId };
-      await api.patch(`/habits/toggle`, payload);
+      await api.patch('/habits/toggle', payload);
       const isHabitAlreadyCompleted = completedHabits.includes(habitId);
       let completedHabitsUpdated: string[] = [];
 
