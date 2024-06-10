@@ -23,6 +23,8 @@ interface DayInfoProps {
   possibleHabits: {
     id: string;
     title: string;
+    streak: number;
+    progress: number[];
   }[];
   completedHabits: string[];
 }
@@ -59,8 +61,9 @@ export function Habit() {
   async function fetchHabits() {
     setIsLoading(true);
     try {
-      const payload = { date, deviceId };
-      const response = await api.post("/day", payload);
+      const response = await api.get("/day", {
+        params: { date, deviceId },
+      });
       setDayInfo(response.data);
       setCompletedHabits(response.data.completedHabits);
     } catch (error: any | Error) {
@@ -76,7 +79,7 @@ export function Habit() {
   async function handleToggleHabit(habitId: string) {
     try {
       const payload = { id: habitId, deviceId };
-      await api.patch('/habits/toggle', payload);
+      await api.patch("/habits/toggle", payload);
       const isHabitAlreadyCompleted = completedHabits.includes(habitId);
       let completedHabitsUpdated: string[] = [];
 
@@ -127,13 +130,16 @@ export function Habit() {
         >
           {dayInfo?.possibleHabits ? (
             dayInfo.possibleHabits?.map((habit) => (
-              <Checkbox
-                key={habit.id}
-                title={habit.title}
-                checked={completedHabits.includes(habit.id)}
-                disabled={isDateInPast}
-                onPress={() => handleToggleHabit(habit.id)}
-              />
+              <View key={habit.id}>
+                <Checkbox
+                  title={habit.title}
+                  checked={completedHabits.includes(habit.id)}
+                  streak={habit.streak}
+                  disabled={isDateInPast}
+                  onPress={() => handleToggleHabit(habit.id)}
+                />
+                <HabitProgress progress={habit.progress} />
+              </View>
             ))
           ) : (
             <HabitsEmpty />
