@@ -1,4 +1,4 @@
-import { ConfigContext, ExpoConfig } from "@expo/config";
+import { ConfigContext, ExpoConfig, ProcessEnv } from "@expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   const projectId = config.extra?.eas?.projectId;
@@ -10,14 +10,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ios: {
       bundleIdentifier:
         APP_ENV === "production"
-          ? "me.ph7.life-routine"
-          : "dev.ph7.life-routine-dev",
+          ? "me.ph7.liferoutine"
+          : "dev.ph7.liferoutine-dev",
     },
     android: {
       package:
         APP_ENV === "production"
-          ? "me.ph7.life_routine"
-          : "dev.ph7.life_routine.dev",
+          ? "me.ph7.liferoutine"
+          : "me.ph7.liferoutine.dev",
     },
     extra: {
       eas: {
