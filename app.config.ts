@@ -1,4 +1,4 @@
-import { ConfigContext, ExpoConfig, ProcessEnv } from "@expo/config";
+import { ConfigContext, ExpoConfig } from "@expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   const projectId = config.extra?.eas?.projectId;
