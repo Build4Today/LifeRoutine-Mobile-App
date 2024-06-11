@@ -61,13 +61,13 @@ export function Habit() {
   async function fetchHabits() {
     setIsLoading(true);
     try {
-      const response = await api.get("/day", {
-        params: { date, deviceId },
+      const response = await api.post("/day", {
+        date,
+        deviceId,
       });
       setDayInfo(response.data);
       setCompletedHabits(response.data.completedHabits);
     } catch (error: any | Error) {
-      console.log(error);
       Toast.show({
         text1: "Unable to load data. Try again later",
       });
