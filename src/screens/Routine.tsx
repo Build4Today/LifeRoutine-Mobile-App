@@ -14,6 +14,7 @@ import { Checkbox } from "../components/Checkbox";
 import { Loading } from "../components/Loading";
 import { HabitsEmpty } from "../components/HabitsEmpty";
 import { getDeviceId } from "../lib/device.util";
+import { HabitProgress } from "../components/HabitProgress";
 
 interface HabitParams {
   date: string;
