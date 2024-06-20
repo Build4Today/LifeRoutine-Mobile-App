@@ -53,6 +53,7 @@ export function New() {
         });
         return;
       }
+
       const payload = { title, weekDays, deviceId };
       await api.post("/habits", payload);
       Toast.show({
