@@ -12,9 +12,7 @@
 
 ## :globe_with_meridians: Web
 
-<img src="./.github/banner_web.png" alt="Logo" />
-
-<br />
+<!-- add screenshot here -->
 
 
 ## 🎉 Maker
