@@ -20,7 +20,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "me.ph7.life-routine"
+      "bundleIdentifier": "me.ph7.life-routine",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
