@@ -1,11 +1,7 @@
 # Mobile App - Habit Tracker App
 
-<h1 align="center">
-  <img src="./.github/logo.svg" alt="Logo" />
-</h1>
-
 <p align="center">
-  Application for creating, monitoring and completing your habits.
+  A React Native app for creating, monitoring and archiving new habits. Consistency pays off. Start being consistent with LifeRoutine app 💪
 </p>
 
 <br />
