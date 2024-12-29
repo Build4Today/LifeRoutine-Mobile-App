@@ -1,7 +1,8 @@
 # Mobile App - Habit Tracker App
 
 <p align="center">
-  A React Native app for creating, monitoring and archiving new habits. Consistency pays off. Start being consistent with LifeRoutine app 💪
+  A React Native app for creating, monitoring and archiving new habits.<br />
+  Consistency pays off. Start being consistent with LifeRoutine app 💪
 </p>
 
 <br />
